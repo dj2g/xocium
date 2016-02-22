@@ -11,6 +11,7 @@ class Web extends Base
     }
 
     public function index(){
+      
 
     	$this->layout->view('index');
     }

@@ -77,7 +77,7 @@
 						<div class="single-profile-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"  >
 							<div class="media">
 								<div class="pull-left">
-									<a href="#"><img class="media-object" src="<?php echo $this->config->item('base_archivos_url');?>images/man1.jpg" alt=""></a>
+									<a href="#"><img class="media-object" style="width: 139px;height:178px;"src="<?php echo $this->config->item('base_archivos_url');?>images/personal/<?php echo $key->foto;?>" alt=""></a>
 								</div>
 								<div class="media-body">
 									<h4><?php echo   $key->grado_titulo ."".$key->nombre ." ". $key->apellidop ." ". $key->apellidom;  ?></h4>

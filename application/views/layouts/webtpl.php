@@ -25,6 +25,11 @@
     <link rel="apple-touch-icon-precomposed" href="<?php echo $this->config->item('base_archivos_url');?>images/ico/apple-touch-icon-57-precomposed.png">
     <?php echo $this->layout->css; ?>
 </head><!--/head-->
+<?php
+        $empresa=$query=$this->db->select("*")->get_where('empresa',["estado = "=>"0"]);
+                                    $resultado=$query->result();
+ ?>
+
 
 <body class="homepage">
 
@@ -33,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  <?php echo $resultado[0]->telefono;?>   RPM:<?php echo $resultado[0]->rpm;?></p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
@@ -97,84 +102,18 @@
     </header><!--/header-->
 
    <?php echo $content_for_layout; ?>
-    <section id="bottom">
-        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Company</h3>
-                        <ul>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">We are hiring</a></li>
-                            <li><a href="#">Meet the team</a></li>
-                            <li><a href="#">Copyright</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Forum</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Refund policy</a></li>
-                            <li><a href="#">Ticket system</a></li>
-                            <li><a href="#">Billing system</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Developers</h3>
-                        <ul>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">SEO Marketing</a></li>
-                            <li><a href="#">Theme</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Email Marketing</a></li>
-                            <li><a href="#">Plugin Development</a></li>
-                            <li><a href="#">Article Writing</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget">
-                        <h3>Our Partners</h3>
-                        <ul>
-                            <li><a href="#">Adipisicing Elit</a></li>
-                            <li><a href="#">Eiusmod</a></li>
-                            <li><a href="#">Tempor</a></li>
-                            <li><a href="#">Veniam</a></li>
-                            <li><a href="#">Exercitation</a></li>
-                            <li><a href="#">Ullamco</a></li>
-                            <li><a href="#">Laboris</a></li>
-                        </ul>
-                    </div>    
-                </div><!--/.col-md-3-->
-            </div>
-        </div>
-    </section><!--/#bottom-->
-
+  
+<br>
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                    &copy; 2016 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates"> XOCIUM PERÚ SA</a>.  
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Inicio</a></li>
+                         
                     </ul>
                 </div>
             </div>
@@ -187,6 +126,26 @@
     <script src="<?php echo $this->config->item('base_archivos_url');?>js/jquery.isotope.min.js"></script>
     <script src="<?php echo $this->config->item('base_archivos_url');?>js/main.js"></script>
     <script src="<?php echo $this->config->item('base_archivos_url');?>js/wow.min.js"></script>
+     <script type="text/javascript">
+     $(document).ready(function(){  
+        $("#imagen1").click(function(){
+            var img=$(this).attr("src");
+            $("#myModalbody").empty();
+            $("#myModalbody").append('<img src="'+img+'" style="width: 80%;height:150%"class="img-responsive">');
+
+            $("#myModal").modal("show");
+
+        });
+             $("#imagen2").click(function(){
+                var img=$(this).attr("src");
+            $("#myModalbody").empty();
+            $("#myModalbody").append('<img src="'+img+'" class="img-responsive">');
+               $("#myModal").modal('show');
+
+        });
+
+     });
+ </script>
      <?php echo $this->layout->js; ?>
 </body>
 </html>

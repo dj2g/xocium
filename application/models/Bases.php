@@ -61,7 +61,7 @@
 		$atributos=$this->attributes($table);
 		$datos = array();
 
-		var_dump($_FILES[$namefile]['name']);
+		var_dump($this->input->get($namefile));
 		exit();
 	$ruta = './public/images' . $table . "/";
             $mi_archivo = $namefile;

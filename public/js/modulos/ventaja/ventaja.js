@@ -13,6 +13,15 @@ jtableCreate('Tabla de Ventajas','ventaja',{
                     title: 'Descripcion',
                     width: '80%'
                 },
+                img: {
+                title: 'Customers File',
+                list: false,
+                create: true,
+                edit: true,
+                input: function (data) {
+                return '<input type="text"id="FileUpload" name="FileUpload"></input>';
+                }
+                },
                 estado:{
                     type:'hidden',
                     visibility : 'hidden'

@@ -571,7 +571,7 @@
         <script src="<?php echo $this->config->item('base_archivos_url');?>dist/js/bootbox.min.js"></script>
 
 <script src="<?php echo $this->config->item('base_archivos_url');?>dist/js/ace-elements.min.js"></script>
-
+     <script src="<?php echo $this->config->item('base_archivos_url');?>js/uploadfile.js"></script>
          <script src="<?php echo $this->config->item('base_archivos_url');?>js/main.js"></script>
 
          

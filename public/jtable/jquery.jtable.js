@@ -1636,13 +1636,13 @@ THE SOFTWARE.
         },
 
          _createFileInputForField: function (field, fieldName, value) {
-            var $input = $('<input class="' + field.inputClass + '" id="Edit-' + fieldName + '" type="file" name="' + fieldName + '"></input></input> <div id="error-' + fieldName + '"></div>');
+            var $input = $('<input class="' + field.inputClass + '" id="Edit-' + fieldName + '" type="file"  size="20"  name="' + fieldName + '"></input></input> <div id="error-' + fieldName + '"></div>');
             if (value != undefined) {
                 $input.val(value);
             }
             
             return $('<div />')
-                .addClass('jtable-input jtable-password-input')
+                .addClass('jtable-input jtable-file-input')
                 .append($input);
         },
 
@@ -2087,7 +2087,7 @@ THE SOFTWARE.
 
         _onSaveClickedOnCreateForm: function (validate) {
             var validate2 =validate || null;
-            console.log(validate2);
+            //console.log(validate2);
             var self = this;
 
             var $saveButton = self._$addRecordDiv.parent().find('#AddRecordDialogSaveButton');
@@ -2277,12 +2277,15 @@ THE SOFTWARE.
                     return;
                 }
 
-                self._onRecordAdded(data);
+                    if(data.Result =='OK'){
+                         self._onRecordAdded(data);
                 self._addRow(
                     self._createRowFromRecord(data.Record), {
                         isNewRow: true
                     });
                 self._$addRecordDiv.dialog("close");
+                    }
+               
             };
 
             $addRecordForm.data('submitting', true); //TODO: Why it's used, can remove? Check it.

@@ -70,7 +70,7 @@ jQuery(function($) {'use strict',
 	});	
 });
 
-var jtableCreate=function(title,table,option){
+var jtableCreate=function(title,table,option,validate){
 $('#TableContainer').jtable({
             title: title,
             paging: true,
@@ -91,7 +91,22 @@ $('#TableContainer').jtable({
                 }
                ]
         },
-            fields: option
+            fields: option,
+
+formCreated: function (event, data){
+	data.form.attr('enctype','multipart/form-data');
+	$("#FileUpload").uploadFile({
+		url:"upload.php",
+		fileName:"file",
+		onSuccess:function(files,data,xhr){
+			UploadedFile = data;
+		}
+	});
+},
+formSubmitting: function (event, data) {
+	$("#FileUpload").html('<input type="text" id="thumb_img" name="thumb_img" value="' + UploadedFile + '">');
+}
+
         });
  $('#LoadRecordsButton').click(function (e) {
         e.preventDefault();
