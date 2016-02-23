@@ -60,8 +60,7 @@
 	{
 		$atributos=$this->attributes($table);
 		$datos = array();
-
-		var_dump($this->input->get($namefile));
+		var_dump($this->input->post());
 		exit();
 	$ruta = './public/images' . $table . "/";
             $mi_archivo = $namefile;

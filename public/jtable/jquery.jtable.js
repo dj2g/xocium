@@ -62,7 +62,7 @@ THE SOFTWARE.
             unAuthorizedRequestRedirectUrl: null,
 
             ajaxSettings: {
-                type: 'GET',
+                type: 'POST',
                 dataType: 'json'
             },
 
@@ -1906,7 +1906,7 @@ THE SOFTWARE.
             for (var i = 0; i < this._fieldList.length; i++) {
                 var fieldName = this._fieldList[i];
                 var field = this.options.fields[fieldName];
-
+                
                 //Do not update non-editable fields
                 if (field.edit == false) {
                     continue;
@@ -2054,7 +2054,7 @@ THE SOFTWARE.
                             id: 'AddRecordDialogSaveButton',
                             text: self.options.messages.save,
                             click: function () {
-                                self._onSaveClickedOnCreateForm(save());
+                                self._onSaveClickedOnCreateForm();
                             }
                         }],
                 close: function () {
@@ -2085,9 +2085,7 @@ THE SOFTWARE.
             }
         },
 
-        _onSaveClickedOnCreateForm: function (validate) {
-            var validate2 =validate || null;
-            //console.log(validate2);
+        _onSaveClickedOnCreateForm: function () {
             var self = this;
 
             var $saveButton = self._$addRecordDiv.parent().find('#AddRecordDialogSaveButton');

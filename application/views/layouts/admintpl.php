@@ -405,7 +405,7 @@
                     <?php
                         }
                     ?>
-                        <a href="<?php echo base_url();?><?php echo $value->url;?>" class="dropdown-toggle">
+                        <a href="<?php echo base_url();?>#" class="dropdown-toggle">
                             <i class="<?php echo $value->icono;?>"></i>
                             <span class="menu-text"><?php echo $value->descripcion;?>  </span>
 

@@ -1,4 +1,3 @@
-
 jtableCreate('Tabla de Ventajas','ventaja',{
                 id_ventaja: {
                     key: true,
@@ -14,30 +13,30 @@ jtableCreate('Tabla de Ventajas','ventaja',{
                     width: '80%'
                 },
                 img: {
-                title: 'Customers File',
-                list: false,
-                create: true,
-                edit: true,
-                input: function (data) {
-                return '<input type="text"id="FileUpload" name="FileUpload"></input>';
-                }
-                },
+                        visibility : 'hidden',
+                        input: function (data) {
+                            return '<input type="file" name="img" id="img" />';
+                        }
+                    },
                 estado:{
                     type:'hidden',
                     visibility : 'hidden'
                 }
 
-            }); 
+            },function(event, data){
+                var bval = true;
+                    bval = bval && $("#Edit-nombre_ventaja").required();
+                    bval = bval && $("#Edit-descripcion").required();
+                    bval = bval && $("#img").required();
+                    if (bval){
+                        return true;
+                    }
+                    return false;
+                }
 
-var nombre_ventaja=$("#Edit-nombre_ventaja");
-var descripcion=$("#Edit-descripcion");
-var form=$("#");
-var save=function(){
-    var bval = true;
-    bval = bval && nombre_ventaja.required();
-    bval = bval && descripcion.required();
-     if(bval){
-            
-    }
-}
+            ); 
+
+
+
+    
 

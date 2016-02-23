@@ -9,15 +9,26 @@ jtableCreate('Tabla de Competencias','competencia',{
                     width: '20%'
                 },
                 img: {
-                    type:'file',
-                    visibility : 'hidden'
+                        visibility : 'hidden',
+                        type:'file'
                 },
                 estado:{
                     type:'hidden',
                     visibility : 'hidden'
                 }
 
-            }); 
+            },
+                    function(event, data){
+                            
+                        var bval = true;
+                            bval = bval && $("#Edit-descripcion").required();
+                            bval = bval && $("#Edit-img").required();
+                            if (bval){
+                                return true;
+                            }
+                            return false;
+                        }
+            ); 
 
 var nombre_ventaja=$("#Edit-nombre_ventaja");
 var descripcion=$("#Edit-descripcion");

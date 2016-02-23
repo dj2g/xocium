@@ -39,15 +39,15 @@ class Ventaja extends Base
             }
             
             }*/
-		  return $this->ResponseJson($this->inserta($this->input->get(),$this->table));
+		  return $this->ResponseJson($this->insertafile($this->input->post(),$this->table,'img'));
     }
 
     public function eliminar(){
-    	return $this->ResponseJson($data=$this->delete($this->table,$this->input->get("id_".$this->table)));
+    	return $this->ResponseJson($data=$this->delete($this->table,$this->input->post("id_".$this->table)));
     }
 
     public function actualizar(){
-        return $this->ResponseJson($data=$this->update($this->input->get(),$this->table,$this->input->get("id_".$this->table)));
+        return $this->ResponseJson($data=$this->update($this->input->post(),$this->table,$this->input->post("id_".$this->table)));
     }
 
     public function allForTable(){

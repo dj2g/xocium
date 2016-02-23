@@ -37,7 +37,33 @@ class Web extends Base
 
     public function servicios(){
 
-    			$this->layout->view('index');
+
+           $consulta = $this->db->query("SELECT
+servicio.img,
+servicio.nombre_servicio,
+servicio.estado,
+trabajo.descripcion,
+servicio.id_trabajo,
+servicio.id_servicio
+FROM
+trabajo
+INNER JOIN servicio ON servicio.id_trabajo = trabajo.id_trabajo"); 
+                $consul = $consulta->result();
+         //var_dump($data);exit();
+
+                 $tra= $this->db->query("select COUNT(id_trabajo) as max from trabajo");
+                 $trabajo = $tra->result();
+
+                 $trax= $this->db->query("select * from trabajo");
+                 $trabajox = $trax->result();
+
+             $data =array(
+    "servicio" =>  $consul ,
+    "trabajo"=>$trabajox,
+    "max"=>  $trabajo 
+    );
+ 
+    			$this->layout->view('servicios',compact("data"));
     }
 
      public function personal(){
@@ -51,6 +77,7 @@ equipo.descripcion as equipodesc,
 equipo.img,
 equipo.estado as esequipo,
 det_equipo.estado,
+det_equipo.cargo,
 personal.apellidom,
 personal.grado_titulo,
 personal.telefono,
@@ -86,6 +113,13 @@ where personal.estado =0;");
 
 
     		$this->layout->view('index');
+    }
+
+    public function herramientas(){
+
+       $data=$this->all("simulador");
+       
+        $this->layout->view('herramienta',compact("data"));
     }
 }
 

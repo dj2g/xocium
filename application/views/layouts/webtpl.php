@@ -76,24 +76,45 @@
                 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo base_url();?>">Inicio</a></li>
-                        <li><a href="<?php echo base_url();?>web/somos">Quienes somos</a></li>
-                        <li><a href="<?php echo base_url();?>web/personal">Equipo Técnico</a></li>
-                         
+                    <?php
+                        if($this->uri->uri_string()==""){
 
-                        <li><a href="<?php echo base_url();?>web/servicios">Servicios</a></li>
-                        <li><a href="<?php echo base_url();?>web/testimonios">Testimonios</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="<?php echo base_url();?>web/contactenos">Contactenos</a></li>                        
+                    ?>
+                    <li class="active">
+                    <?php
+                        }else{
+                    ?>
+                    <li class="">
+                    <?php
+                    }
+                    ?>
+
+                    <a href="<?php echo base_url();?>">Inicio</a></li>
+
+                    <?php 
+                        $url=$this->uri->uri_string();
+                            $query2=$this->db->get_where('modulos',['url'=>$url]);
+                                    $resultado2=$query2->result();
+                    $total=$this->db->order_by('orden', 'ASC')->get_where('modulos',['idpadre'=>'1','estado'=>0]);
+                             $t=$total->result();
+                             foreach ($t as  $value) {
+                                     if($url==$value->url){                 
+                    ?>
+            
+        <li class="active"><a href="<?php echo base_url();?><?php echo $value->url;?>"><?php echo $value->descripcion?></a></li>
+
+                    <?php
+                }else{
+                    ?>
+
+            <li><a href="<?php echo base_url();?><?php echo $value->url;?>"><?php echo $value->descripcion?></a></li>
+
+                    <?php
+                        }
+                         
+                       }
+
+                    ?>                       
                     </ul>
                 </div>
             </div><!--/.container-->
